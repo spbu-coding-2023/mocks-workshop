@@ -19,16 +19,20 @@ repositories {
 }
 
 dependencies {
+    implementation(kotlin("stdlib"))
+    implementation("io.ktor:ktor-client-core:2.3.9")
+    implementation("io.ktor:ktor-client-cio:2.3.9")
+    implementation("io.ktor:ktor-client-mock:2.3.9")
+    implementation("org.jsoup:jsoup:1.17.2")
+
     // Use the Kotlin JUnit 5 integration.
     testImplementation("org.jetbrains.kotlin:kotlin-test-junit5")
 
     // Use the JUnit 5 integration.
     testImplementation(libs.junit.jupiter.engine)
-
+    testImplementation("io.mockk:mockk:1.13.10")
     testRuntimeOnly("org.junit.platform:junit-platform-launcher")
 
-    // This dependency is used by the application.
-    implementation(libs.guava)
 }
 
 // Apply a specific Java toolchain to ease working on different environments.
@@ -40,7 +44,7 @@ java {
 
 application {
     // Define the main class for the application.
-    mainClass = "org.example.AppKt"
+    mainClass = "org.example.WebScraperKt"
 }
 
 tasks.named<Test>("test") {
