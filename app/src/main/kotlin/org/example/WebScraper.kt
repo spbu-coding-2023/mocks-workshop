@@ -18,7 +18,7 @@ class WebScraper(private val client: HttpClient, private val url: Url) {
         }
 
         val document = Jsoup.parse(response.bodyAsText())
-        val title = document.select("h2.post__title").first()
+        val title = document.select("h2.tm-title").first()
         return title?.text()
     }
 }

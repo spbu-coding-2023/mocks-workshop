@@ -18,7 +18,9 @@ class GradesServiceTest {
     @BeforeEach
     fun setUp() {
         student = Student("Max")
-        every { gradebookStub.gradesFor(student) } returns listOf(8, 6, 10)
+        every {
+            gradebookStub.gradesFor(student)
+        } returns listOf(8, 6, 10)
     }
 
     @Test

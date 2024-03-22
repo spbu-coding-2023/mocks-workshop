@@ -1,6 +1,7 @@
 package org.example
 
 import io.ktor.client.*
+import io.ktor.client.engine.cio.*
 import io.ktor.client.engine.mock.*
 import io.ktor.http.*
 import kotlinx.coroutines.runBlocking
@@ -11,7 +12,7 @@ import kotlin.test.Test
 class WebScraperTest {
     private val correctHabrUrl = Url("https://habr.com/ru/")
     private val invalidHabrUrl = Url("https://habr.com/notfound")
-    private val title = "Скрипт для создания OpenVPN сервера, или как один админ удаленку облегчал"
+    private val title = "Безопасность данных в BI-системе"
 
     private val clientMock = HttpClient(MockEngine) {
         expectSuccess = false
@@ -20,7 +21,7 @@ class WebScraperTest {
                 when (request.url) {
                     correctHabrUrl -> {
                         respond(
-                            "<html><body><h2 class='post__title'>${title}</h2></body></html>",
+                            "<html><body><h2 class='tm-title'>${title}</h2></body></html>",
                             status = HttpStatusCode.OK
                         )
                     }
